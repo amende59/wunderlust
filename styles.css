@@ -1,0 +1,829 @@
+/* Abraham Mendez */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/* End of reset CSS */
+
+/* Global Variables */
+
+@import url(https://fonts.google.com/share?selection.family=Molle:ital@1%7CMontserrat);
+
+:root {
+    --yellow: #F6D64A;
+    --teal: #55BCD5;
+    --purple: #9B26B0;
+    --blue: #499BD2;
+    --dark-gray: #222222;
+    --light-gray: #EAEAEA;
+    --white: #FFFFFF;
+    --black: #000000;
+}
+
+body {
+    margin: 0;
+    background-color: var(--white);
+    color: var(--black);
+}
+
+/* Font Styles */
+
+h1, h2, h3 {
+    font-family: 'Molle', cursive;
+}
+
+h4, p, q, small, nav, button, form, span{
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Skip Link */
+
+#skip {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+#skip:focus {
+    position: static;
+    width: auto;
+    height: auto;
+}
+
+/* Header layout*/
+
+header {
+    background: linear-gradient(to bottom, var(--blue), var(--white));
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0 1rem;
+    align-items: center;
+}
+
+header #logo {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+}
+
+#logo img {
+    width: 8rem;
+    height: auto;
+}
+
+header nav {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 1rem;
+}
+
+header h1 {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    font-size: 2.5rem;
+}
+
+header p {
+    font-size: 1rem;
+    grid-column: 1 / -1;
+    grid-row: 3;
+    line-height: 1.5;
+}
+
+header h1 {
+    margin: 1rem 0 0 2rem;
+}
+header p {
+    margin: 0 2rem;
+}
+
+/* Screen reader */
+
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+/* Menu layout */
+
+#menu-toggle {
+    grid-column: 2;  
+}
+
+#menu-toggle input[type="checkbox"] {
+    display: none;
+}
+
+#menu-toggle label {
+    background-color: var(--yellow);
+    color: var(--black);
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    font-size: .8rem;
+    text-transform: uppercase;
+}
+
+#menu-toggle ul {
+    display: none;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+#toggle:checked + label {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    text-transform: uppercase;
+}
+
+#toggle:checked + label + ul {
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   top: 0;
+   left:0;
+   width: 100%;
+   margin: 0;
+   padding: 0;
+}
+
+#menu-toggle ul li {
+    background-color: var(--teal);
+    border: 1px solid var(--black);
+    padding: 1.25rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+#menu-toggle ul li a {
+    color: var(--black);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+/* Main Layout */
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 1rem;
+}
+
+#intro {
+    background-color: var(--white);
+}
+
+#intro h2 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    margin: 1rem 0 0 2rem;
+}
+
+#intro p {
+    grid-column: 1 / -1;
+    font-size: .8rem;
+    margin: 1rem 2rem;
+    line-height: 1.5;
+}
+
+#img-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .5rem;
+    padding-bottom: 1rem;
+}
+
+#img-grid img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* Plan your trip */
+
+#plan {
+    background: var(--yellow);
+    padding: 1.5rem 1.5rem;
+}
+
+#plan section {
+    background: var(--teal);
+}
+
+#plan h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+#plan div {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .5rem;
+}
+
+
+#plan div section {
+    border: 3px solid var(--white);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Card title */
+
+#plan div section h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+/* Icon */
+#plan div section img {
+    width: 60%;
+    height: auto;
+    padding: 1rem;
+}
+
+/* Testimonials */
+#testimonials {
+    background: var(--white);
+    padding: 1.5rem 1.5rem;
+}
+
+#testimonials h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#testimonials div {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .5rem;
+}
+
+#testimonials div section {
+    text-align: center;
+}
+
+#testimonials img {
+    width: 60%;
+    height: auto;
+    padding: 1rem;
+}
+
+#testimonials h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+}
+
+#testimonials p {
+    font-size: 1rem;
+}
+
+#testimonials q {
+    display: block;
+    font-style: italic;
+    line-height: 1.3;
+    max-width: 22ch;
+    margin: 0 auto;
+    quotes: "“" "”";
+}
+
+#testimonials q:before {
+    content: open-quote;
+}
+
+#testimonials q:after {
+    content: close-quote;
+}
+
+/* About layout */
+
+#about {
+    background: var(--blue);
+    padding: 1.5rem 1rem;
+}
+
+#about h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#about div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+#about div section {
+    text-align: center;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+}
+#about section img {
+    width: 5rem;
+    height: 5rem;
+    display: block;
+    margin: 0 auto;
+}
+
+#about section h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: .5rem auto;
+}
+/* Contact section */
+
+#contact {
+    background: var(--white);
+    padding: 1.5rem 1rem;
+}
+
+#contact h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#contact form {
+    display: grid;
+    row-gap: 1rem;
+}
+.form-required {
+    font-size: .9rem;
+    font-style: italic;
+}
+
+#names label,
+#nums > label,
+#selects label,
+legend {
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: .9rem;
+    margin: 1rem 0 .1rem 0;
+}
+
+/* Nums section */
+
+#nums label {
+    display: flex;
+    align-items: center;
+}
+.required {
+    color: var(--purple);
+    margin-left: .2rem;
+}
+
+#names input,
+#nums input[type="email"],
+#nums input[type="tel"],
+#selects select {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 2px solid var(--purple);
+    background: none;
+}
+
+.radio-input {
+    display: flex;
+    align-items: center;
+    margin: .5rem 0;
+}
+
+.radio-control {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 2px solid var(--purple);
+    border-radius: 50%;
+    position: relative;
+    margin-right: 0.75rem;
+}
+
+.radio-input input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.radio-input input:checked + .radio-control::after {
+    background: var(--purple);
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Selects */
+
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select select {
+    width: 100%;
+    padding: .5rem;
+    font-size: 1rem;
+    border: 2px solid var(--purple);
+    background: none;
+    appearance: none;
+}
+
+.custom-select::after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    right: 2rem;                     
+    transform: translateY(-50%) rotate(45deg);
+    width: 1rem;
+    height: 1rem;
+    border: solid var(--purple);
+    border-width: 0 2px 2px 0;
+}
+
+  /* Submit button */
+#mySubmit {
+    width: 100%;
+    padding: 1rem;
+    font-size: .9rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    border: none;
+    background: var(--purple);
+    color: var(--white);
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+/* Footer layout */
+
+footer {
+    background-color: var(--light-gray);
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+footer p {
+    margin: 0 0 1rem;
+    font-size: .75rem;
+    color: var(--dark-gray);
+}
+
+footer a {
+    color: var(--dark-gray);
+    text-decoration: none;
+    font-size: .75rem;
+    display: block;
+    margin: 0.5rem 0;
+}
+
+/* Tablet view */
+
+@media (min-width: 768px) {
+
+    /* Header Layout */
+    header {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    header #logo {
+        grid-column: 1;
+        grid-row: 1 / 3;
+    }
+
+    #logo img {
+        width: 13rem;
+    }
+
+    header nav {
+        grid-column: 1 / 5;
+        grid-row: 3;
+        font-size: 1rem;
+    }
+
+    header h1 {
+        grid-column: 2 / 4;
+        grid-row: 1;
+        font-size: 3rem;
+    }
+
+    header p {
+        grid-column: 2 / 5;
+        grid-row: 2;
+        font-size: 1.25rem;
+        padding: 1rem 2rem 1rem 0;
+    }
+    
+    /* Navigation layout */
+
+    #menu-toggle label {
+        display: none;
+    }
+
+    #menu-toggle ul {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        padding: 2rem;
+    }
+
+    #menu-toggle ul li {
+        background-color: var(--white);
+        text-transform: uppercase;
+        padding: 1.25rem;
+        text-align: center;
+        font-weight: bold;
+        font-size: .8rem;
+        border: none;
+    }
+
+    #menu-toggle ul li:first-child {
+        background-color: var(--yellow);
+    }
+
+    #intro h2 {
+        font-size: 3rem;
+    }
+
+    #intro p {
+        font-size: 1.2rem;
+    }
+
+    #img-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 0 2rem ;
+        margin-bottom: 1rem;
+    }
+
+    #img-grid > *:nth-child(3) {
+        grid-column: 1 / -1;
+    }
+
+    /* Image section */
+
+    #plan > div {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    #plan h3 {
+        font-size: 3rem;
+    }
+    
+    #plan div section h4 {
+        font-size: 1.5rem;
+    }
+
+    /* Testimontials Section */
+
+    #testimonials div {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    #testimonials h3 {
+        font-size: 3rem;
+    }
+
+    #testimonials div section h4 {
+        font-size: 2rem;
+    }
+
+    /* About section */
+
+    #about div {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    #about h3 {
+        font-size: 3rem;
+    }
+
+    #about div section h4 {
+        font-size: 1.5rem;
+    }
+
+    /* Contact section */
+
+    #contact {
+        padding: 2rem;
+    }
+    #contact h3 {
+        font-size: 3rem;
+    }
+
+    #nums fieldset {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    footer {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    footer p {
+        font-size: 1rem;
+        grid-column: 1 / 3;
+        margin-top: .5rem;
+    }
+
+    footer a {
+        font-size: .9rem;
+        
+    }
+}
+
+/* Desktop view */
+
+@media (min-width: 1024px) {
+    
+    /* Header layout */
+    header {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        align-items: center;
+    }
+
+    #logo {
+        grid-row: 1 / 4;
+        padding: 0;
+        margin: 0;
+    }
+
+    header h1 {
+        grid-row: 2;
+        justify-self: start;
+        font-size: 2.5rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    header p {
+        grid-row: 3;
+        justify-self: start;
+        font-size: 1rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    header nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        
+    }
+
+    #menu-toggle ul{
+        width: auto;
+        padding: 0;
+    }
+
+    #menu-toggle ul li{
+        padding: 0.5rem 1rem;
+        font-size: 0.5rem;
+    }
+
+    /* Intro */
+
+    #intro {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    #intro h2,
+    #intro p {
+        grid-column: 1;
+    }
+
+    #intro h2 {
+        font-size: 2rem;
+        padding: 0 2rem;
+    }
+
+    #intro p {
+        font-size: 1rem;
+        padding: 0 0 0 2rem;
+    }
+
+    /* Plan section  */
+    #plan > div{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    #plan h3 {
+        font-size: 2rem;
+    }
+
+    #plan div section h4 {
+        font-size: 1.1rem;
+    }
+
+    /* Testimonials section */
+
+    #testimonials {
+        padding: 3rem;
+    }
+    #testimonials div {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    #testimonials h3 {
+        font-size: 2rem;
+    }
+
+    #testimonials div section h4 {
+        font-size: 1.2rem;
+    }
+
+    /* Contact section */
+
+    #contact form {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    #contact h3 {
+        font-size: 2rem;
+    }
+}
